@@ -54,4 +54,4 @@ while True:
 		curr_state = statemachine(curr_state,x)
 		u = act(curr_state,x)
 		print(dt,x,curr_state)
-		torque = bytes(str(u),'utf-8')
+		torque = bytes(str(round(u,4)),'utf-8')+bytes('\n','utf-8')
