@@ -18,12 +18,12 @@ def act(curr_state,x):
 			TE = 0.1569e0 * math.cos(x[1]) + 0.2126e-1 * math.cos(x[1]) * math.cos(x[2]) - 0.2126e-1 * math.sin(x[1]) * math.sin(x[2]) + (x[4] * ((-0.1e-5 - 0.12e-6 * math.cos(x[2]) ** 2) * math.cos(x[1]) ** 2 + 0.2472e-2 + 0.2e-7 * math.cos(x[2]) ** 2 + (0.1e-5 + 0.4e-7 * math.cos(x[2]) ** 2) * math.cos(x[1]) ** 2 + 0.2e-7 * math.cos(x[1]) ** 2 * math.cos(x[2]) ** 2 + 0.6500e-3 * math.cos(x[2])) / 0.2e1 + x[5] * ((0.2e-7 - 0.6e-7 * math.cos(x[1]) ** 2) * math.cos(x[2]) ** 2 + 0.3250e-3 * math.cos(x[2]) + 0.2344e-3 + 0.2e-7 * math.cos(x[1]) ** 2) / 0.2e1) * x[4] + (x[4] * ((0.2e-7 - 0.6e-7 * math.cos(x[1]) ** 2) * math.cos(x[2]) ** 2 + 0.3250e-3 * math.cos(x[2]) + 0.2344e-3 + 0.2e-7 * math.cos(x[1]) ** 2) / 0.2e1 + x[5] * ((0.2e-7 - 0.2e-7 * math.cos(x[2]) ** 2) * math.cos(x[1]) ** 2 + 0.2344e-3 + 0.2e-7 * math.cos(x[2]) ** 2 + 0.10e-6 * math.cos(x[1]) ** 2 * math.cos(x[2]) ** 2) / 0.2e1) * x[5]
 			u = sw_const*(TE_ref - TE)*sign(x[4]*math.cos(x[1]))
 	elif(curr_state == 'up_down'):
-		u = -cp.dot(K_updown*x)
-	elif(curr_state == 'balance')
+		u = -cp.dot(K_updown,x)
+	elif(curr_state == 'balance'):
 		u = -cp.dot(K_balance,x)
-	elif(curr_state == 'arm_correction')
+	elif(curr_state == 'arm_correction'):
 		u = alpha*x[0] - beta*x[3]
-	elif(curr_state == 'compliant')
+	elif(curr_state == 'compliant'):
 		u = -cp.dot(K_compliant,x)
 	return u
 

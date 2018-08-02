@@ -16,6 +16,7 @@ sock.bind((UDP_IP, UDP_PORT))
 ser = serial.Serial()
 ser.baudrate = 2000000
 ser.port = 'COM10'
+ser.open()
 
 flag1 = flag2 = flag3 = 0
 
@@ -53,5 +54,6 @@ while True:
 		t_prev = t
 		curr_state = statemachine(curr_state,x)
 		u = act(curr_state,x)
-		print(dt,x,curr_state)
-		torque = bytes(str(round(u,4)),'utf-8')+bytes('\n','utf-8')
+		torque = bytes(str(round(float(u),4)),'utf-8')+bytes('\n','utf-8')
+		print(dt,x,curr_state,torque)
+		ser.write(torque)
