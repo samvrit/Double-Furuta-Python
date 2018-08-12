@@ -1,4 +1,7 @@
-import cupy as cp
+try:
+	import cupy as cp
+except ModuleNotFoundError:
+	import numpy as cp
 import math
 
 K_balance = cp.array([0.03, -0.46, -2.57, 0.03, -0.20, -0.25])
@@ -25,7 +28,7 @@ def act(curr_state,x):
 		u = alpha*x[0] - beta*x[3]
 	elif(curr_state == 'compliant'):
 		u = -cp.dot(K_compliant,x)
-	return u
+	return round(float(u),4)
 
 def sign(a):
 	if(a < 0):
