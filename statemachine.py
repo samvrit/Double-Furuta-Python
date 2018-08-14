@@ -33,9 +33,9 @@ def statemachine(curr_state, x):
 		elif(cond3):
 			next_state = 'compliant'
 	elif(curr_state == 'balance'):
-		cond1 = (abs(x[1]) > deg2rad(20))
+		cond1 = (abs(x[1]) > deg2rad(60))
 		cond2 = (abs(x[1]) <= deg2rad(1)) and (abs(x[2]) <= deg2rad(1)) and (abs(x[3]) <= deg2rad(1))
-		cond3 = abs(x[1]) < deg2rad(20) and abs(x[2]) > deg2rad(15)
+		cond3 = abs(x[1]) < deg2rad(20) and abs(x[2]) > deg2rad(60)
 		if(cond1):
 			next_state = 'swing_up'
 		elif(cond3):

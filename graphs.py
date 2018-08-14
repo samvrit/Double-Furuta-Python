@@ -13,6 +13,7 @@ x4 = []
 x5 = []
 x6 = []
 tau = []
+state = []
 
 with open('states_log.txt','r') as csvfile:
 	plots = csv.reader(csvfile, delimiter=',')
@@ -24,14 +25,17 @@ with open('states_log.txt','r') as csvfile:
 		x5.append(float(row[4]))
 		x6.append(float(row[5]))
 		tau.append(float(row[6]))
+		state.append(float(row[7]))
 
 fig = plt.figure()
-ax1 = fig.add_subplot(3,2,1)
-ax2 = fig.add_subplot(3,2,2)
-ax3 = fig.add_subplot(3,2,3)
-ax4 = fig.add_subplot(3,2,4)
-ax5 = fig.add_subplot(3,2,5)
-ax6 = fig.add_subplot(3,2,6)
+ax1 = fig.add_subplot(3,3,1)
+ax2 = fig.add_subplot(3,3,2)
+ax3 = fig.add_subplot(3,3,3)
+ax4 = fig.add_subplot(3,3,4)
+ax5 = fig.add_subplot(3,3,5)
+ax6 = fig.add_subplot(3,3,6)
+ax7 = fig.add_subplot(3,3,7)
+ax8 = fig.add_subplot(3,3,8)
 
 ax1.clear()
 ax1.plot(list(range(len(x1))), x1)
@@ -56,5 +60,13 @@ ax5.set_ylabel('X5')
 ax6.clear()
 ax6.plot(list(range(len(x6))), x6)
 ax6.set_ylabel('X6')
+
+ax7.clear()
+ax7.plot(list(range(len(tau))), tau)
+ax7.set_ylabel('tau')
+
+ax8.clear()
+ax8.plot(list(range(len(state))), state)
+ax8.set_ylabel('state')
 
 plt.show()

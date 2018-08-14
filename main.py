@@ -39,18 +39,21 @@ while True:
 	if(address % 10 == 1):
 		flag1 = 1
 		data = data.split(',')
-		x[0] = float(data[0])
-		x[3] = float(data[1])
+		if(abs(float(data[1])) < 100):	
+			x[0] = float(data[0])
+			x[3] = float(data[1])
 	elif(address % 10 == 2):
 		flag2 = 1
 		data = data.split(',')
-		x[1] = float(data[0])
-		x[4] = float(data[1])
+		if(abs(float(data[1])) < 100):
+			x[1] = float(data[0])
+			x[4] = float(data[1])
 	elif(address % 10 == 3):
 		flag3 = 1
 		data = data.split(',')
-		x[2] = float(data[0])
-		x[5] = float(data[1])
+		if(abs(float(data[1])) < 100):
+			x[2] = float(data[0])
+			x[5] = float(data[1])
 	
 	if(flag1 == 1 and flag2 == 1 and flag3 == 1):
 		flag1 = flag2 = flag3 = 0
@@ -60,8 +63,7 @@ while True:
 		curr_state = statemachine(curr_state,x)
 		u = act(curr_state,x)
 		if(motor_active):
-			update_globals(x,u)
+			update_globals(x,u,curr_state)
 		torque = bytes(str(u),'utf-8')+bytes('\n','utf-8')
 		print(dt,x,curr_state,torque)
 		ser.write(torque)
-		time.sleep(0.001)
