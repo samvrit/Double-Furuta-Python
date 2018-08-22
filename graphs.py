@@ -15,7 +15,7 @@ x6 = []
 tau = []
 state = []
 
-with open('states_log.txt','r') as csvfile:
+with open('states_log_saved.txt','r') as csvfile:
 	plots = csv.reader(csvfile, delimiter=',')
 	for row in plots:
 		x1.append(float(row[0]))
